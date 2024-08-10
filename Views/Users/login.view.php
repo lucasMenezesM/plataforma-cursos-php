@@ -11,7 +11,7 @@
         </div>
 
         <div class="form-floating">
-            <input type="password" class="form-control" placeholder="Password" name="passowrd">
+            <input type="password" class="form-control" placeholder="Password" name="password">
             <label for="floatingPassword">Password</label>
         </div>
 

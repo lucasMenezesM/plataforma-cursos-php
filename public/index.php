@@ -2,6 +2,9 @@
 require "../helpers.php";
 require basePath("vendor/autoload.php");
 require basePath("Router.php");
+require basePath("Session.php");
+
+Session::start();
 
 use Dotenv\Dotenv;
 

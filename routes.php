@@ -58,10 +58,31 @@ return [
         "middleware" => ["guest"]
     ],
     [
+        "uri" => "/users",
+        "method" => "POST",
+        "controller" => "UsersController",
+        "controllerMethod" => "create",
+        "middleware" => ["guest"]
+    ],
+    [
+        "uri" => "/users/logout",
+        "method" => "GET",
+        "controller" => "UsersController",
+        "controllerMethod" => "logout",
+        "middleware" => ["auth"]
+    ],
+    [
         "uri" => "/users/login",
         "method" => "GET",
         "controller" => "UsersController",
         "controllerMethod" => "loginView",
+        "middleware" => ["guest"]
+    ],
+    [
+        "uri" => "/users/login",
+        "method" => "POST",
+        "controller" => "UsersController",
+        "controllerMethod" => "login",
         "middleware" => ["guest"]
     ]
 ];

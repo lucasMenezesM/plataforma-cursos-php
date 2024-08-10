@@ -17,7 +17,7 @@ class CoursesController
      */
     public function index()
     {
-        echo "cursos loaded";
+        inspect($this->db->findAll());
     }
 
     /**

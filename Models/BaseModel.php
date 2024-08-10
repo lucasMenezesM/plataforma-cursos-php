@@ -40,7 +40,22 @@ class BaseModel
 
     public function findOne(string $field, string $value): array | false
     {
-        $query = "SELECT * FROM {$this->table} WHERE {$field} = {$value}";
+        $query = "SELECT * FROM {$this->table} WHERE {$field} = '{$value}'";
         return $this->connection->query($query)->fetch();
+    }
+
+    public function add2($data)
+    {
+
+
+        // $params = [];
+        // foreach($data as $field=>$value){
+        //     $params
+        // }
+
+        // $query = "INSERT INTO {$this->table}()";
+        // $smth = $this->connection->prepare($query);
+        // $smth->execute($params);
+
     }
 }

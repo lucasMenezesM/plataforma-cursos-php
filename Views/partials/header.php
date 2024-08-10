@@ -21,8 +21,13 @@
             </form>
 
             <div class="text-end">
-                <a href="/users/login" class="btn btn-outline-light me-2">Login</a>
-                <a href="/users/register" class="btn btn-primary">Sign-up</a>
+                <?php if (Session::has("user")): ?>
+                    <a href="/users/logout" class="btn btn-outline-light me-2">Logout</a>
+                <?php else: ?>
+                    <a href="/users/login" class="btn btn-outline-light me-2">Login</a>
+                    <a href="/users/register" class="btn btn-primary">Sign-up</a>
+                <?php endif ?>
+
                 <a href="/courses/create" class="btn btn-primary mx-2">Create Course</a>
             </div>
         </div>
