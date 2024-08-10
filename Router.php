@@ -52,6 +52,7 @@ class Router
             }
         }
 
+        http_response_code(404);
         loadView("error", ["statusCode" => 404]);
     }
 

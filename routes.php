@@ -11,35 +11,42 @@ return [
     [
         "uri" => "/cursos",
         "method" => "GET",
-        "controller" => "CursosController",
+        "controller" => "CoursesController",
         "controllerMethod" => "index",
         "middleware" => []
     ],
     [
+        "uri" => "/cursos/create",
+        "method" => "GET",
+        "controller" => "CoursesController",
+        "controllerMethod" => "create",
+        "middleware" => ["auth"]
+    ],
+    [
         "uri" => "/cursos",
         "method" => "POST",
-        "controller" => "CursosController",
-        "controllerMethod" => "create",
+        "controller" => "CoursesController",
+        "controllerMethod" => "store",
         "middleware" => ["admin"]
     ],
     [
         "uri" => "/cursos/{id}",
         "method" => "GET",
-        "controller" => "CursosController",
+        "controller" => "CoursesController",
         "controllerMethod" => "show",
         "middleware" => []
     ],
     [
         "uri" => "/cursos/{id}",
         "method" => "DELETE",
-        "controller" => "CursosController",
+        "controller" => "CoursesController",
         "controllerMethod" => "destroy",
         "middleware" => ["admin"]
     ],
     [
         "uri" => "/cursos/{id}",
         "method" => "PUT",
-        "controller" => "CursosController",
+        "controller" => "CoursesController",
         "controllerMethod" => "update",
         "middleware" => ["admin"]
     ]

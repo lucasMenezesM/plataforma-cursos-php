@@ -43,3 +43,8 @@ function loadView(string $view, array $data = []): void
     extract($data);
     require basePath("Views/" . $view . ".view.php");
 }
+
+function loadPartial(string $path)
+{
+    require basePath("Views/partials/" . $path . ".php");
+}
