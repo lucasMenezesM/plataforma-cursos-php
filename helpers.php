@@ -48,3 +48,8 @@ function loadPartial(string $path)
 {
     require basePath("Views/partials/" . $path . ".php");
 }
+
+function redirect(string $location)
+{
+    header("location: " . $location);
+}

@@ -6,7 +6,7 @@ class CoursesModel extends BaseModel
 {
     public function __construct()
     {
-        parent::__construct("Curso");
+        parent::__construct("Courses");
     }
 
     /**
@@ -19,20 +19,19 @@ class CoursesModel extends BaseModel
      * @param integer $qtd_alunos_matriculados
      * @return void
      */
-    public function add(string $nome, string $descricao, int $carga_horaria, int $qtd_aulas, int $qtd_alunos_matriculados)
+    public function add(string $name, string $description, int $hours_video, int $lessons, int $enrolled_students, string $teacher)
     {
-        $professorId = 1;
 
         $params = [
-            "professor_id" => $professorId,
-            "nome" => $nome,
-            "descricao" => $descricao,
-            "carga_horario" => $carga_horaria,
-            "qtd_aulas" => $qtd_aulas,
-            "qtd_alunos_matriculados" => $qtd_alunos_matriculados
+            "teacher" => $teacher,
+            "name" => $name,
+            "description" => $description,
+            "hours_video" => $hours_video,
+            "lessons" => $lessons,
+            "enrolled_students" => $enrolled_students
         ];
 
-        $query = "INSERT INTO {$this->table} (professor_id, nome, descricao, carga_horario, qtd_aulas, qtd_alunos_matriculados) VALUES (:professor_id, :nome, :descricao, :carga_horario, :qtd_aulas, :qtd_alunos_matriculados)";
+        $query = "INSERT INTO {$this->table} (teacher, name, description, hours_video, lessons, enrolled_students) VALUES (:teacher, :name, :description, :hours_video, :lessons, :enrolled_students)";
 
         $smth = $this->connection->prepare($query);
         $smth->execute($params);

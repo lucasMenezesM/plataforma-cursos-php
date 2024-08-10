@@ -56,7 +56,8 @@ class CoursesController
         $lessons = (int) $_POST["lessons"] ?? 0;
         $hours_video = (int) $_POST["hours_video"] ?? 0;
         $enrolled_students = (int) $_POST["enrolled_students"] ?? 0;
+        $teacher = $_POST["teacher"] ?? "";
 
-        $this->db->add($name, $description, $hours_video, $lessons, $enrolled_students);
+        $this->db->add($name, $description, $hours_video, $lessons, $enrolled_students, $teacher);
     }
 }

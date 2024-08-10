@@ -1,18 +1,33 @@
 <?php loadPartial("head"); ?>
-<h1>Create Course</h1>
+<?php loadPartial("header"); ?>
 
-<form action="/cursos" method="post">
-    <label for="">name</label>
-    <input type="text" name="name" id="">
-    <label for="">descricao</label>
-    <input type="text" name="description" id="">
-    <label for="">carga_horaria</label>
-    <input type="text" name="hours_video" id="">
-    <label for="">aulas</label>
-    <input type="text" name="lessons" id="">
-    <label for="">alunos</label>
-    <input type="text" name="enrolled_students" id="">
-    <button type="submit">Enviar</button>
-</form>
+<div class="container create-course-form">
+    <h1>Create Course</h1>
+    <form method="POST" action="/courses">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Description</label>
+            <input type="text" class="form-control" id="" name="description">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Teacher</label>
+            <input type="text" class="form-control" id="" name="teacher">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Lessons</label>
+            <input type="text" class="form-control" id="" name="lessons">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Hours On-Demand Video</label>
+            <input type="text" class="form-control" id="" name="hours_video">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
 
 <?php loadPartial("footer"); ?>
