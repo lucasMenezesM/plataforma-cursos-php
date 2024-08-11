@@ -20,14 +20,14 @@ return [
         "method" => "GET",
         "controller" => "CoursesController",
         "controllerMethod" => "create",
-        "middleware" => ["auth"]
+        "middleware" => ["Auth", "Admin"]
     ],
     [
         "uri" => "/courses",
         "method" => "POST",
         "controller" => "CoursesController",
         "controllerMethod" => "store",
-        "middleware" => ["admin"]
+        "middleware" => ["Admin"]
     ],
     [
         "uri" => "/courses/{id}",
@@ -41,48 +41,48 @@ return [
         "method" => "DELETE",
         "controller" => "CoursesController",
         "controllerMethod" => "destroy",
-        "middleware" => ["admin"]
+        "middleware" => ["Auth", "Admin"]
     ],
     [
         "uri" => "/courses/{id}",
         "method" => "PUT",
         "controller" => "CoursesController",
         "controllerMethod" => "update",
-        "middleware" => ["admin"]
+        "middleware" => ["Auth", "Admin"]
     ],
     [
         "uri" => "/users/register",
         "method" => "GET",
         "controller" => "UsersController",
         "controllerMethod" => "signupView",
-        "middleware" => ["guest"]
+        "middleware" => ["Guest"]
     ],
     [
         "uri" => "/users",
         "method" => "POST",
         "controller" => "UsersController",
         "controllerMethod" => "create",
-        "middleware" => ["guest"]
+        "middleware" => ["Guest"]
     ],
     [
         "uri" => "/users/logout",
         "method" => "GET",
         "controller" => "UsersController",
         "controllerMethod" => "logout",
-        "middleware" => ["auth"]
+        "middleware" => ["Auth"]
     ],
     [
         "uri" => "/users/login",
         "method" => "GET",
         "controller" => "UsersController",
         "controllerMethod" => "loginView",
-        "middleware" => ["guest"]
+        "middleware" => ["Guest"]
     ],
     [
         "uri" => "/users/login",
         "method" => "POST",
         "controller" => "UsersController",
         "controllerMethod" => "login",
-        "middleware" => ["guest"]
+        "middleware" => ["Guest"]
     ]
 ];

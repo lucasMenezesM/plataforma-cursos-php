@@ -1,4 +1,6 @@
 <?php
+// Middlewares\Authorize.php
+require basePath("Middlewares/Authorize.php");
 
 class Router
 {
@@ -14,6 +16,8 @@ class Router
         $requestMethod = $_SERVER["REQUEST_METHOD"];
 
         foreach ($this->routes as $route) {
+
+
             // uri requested by user
             $uriSegments = explode("/", trim($uri, '/'));
 
@@ -41,6 +45,9 @@ class Router
 
                 if ($match) {
                     // Extract controller and controller method
+                    inspect($route["middleware"]);
+                    inspect(Session::get("user"));
+                    Authorize::authorize($route["middleware"]);
 
                     require basePath("Controllers/" . $route["controller"] . ".php");
                     $controller = new $route['controller']();

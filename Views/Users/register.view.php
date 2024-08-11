@@ -32,6 +32,13 @@
             <label for="floatingPassword">Confirm Password</label>
         </div>
 
+        <?php if (Session::has("user") && Session::get("user")[0]["user_type"] === "admin"): ?>
+            <div class="my-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Is admin</label>
+            </div>
+        <?php endif ?>
+
         <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
     </form>
 </div>

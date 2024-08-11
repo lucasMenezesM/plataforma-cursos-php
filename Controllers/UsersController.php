@@ -83,6 +83,7 @@ class UsersController
                 "email" => $email,
                 "city" => $city,
                 "country" => $country,
+                "user_type" => $user["user_type"]
             ]
         ]);
 
@@ -107,6 +108,7 @@ class UsersController
                     "email" => $user["email"],
                     "city" => $user["city"],
                     "country" => $user["country"],
+                    "user_type" => $user["user_type"]
                 ]
             ]);
             Session::set("success_messages", [["message" => "User logged in"]]);
