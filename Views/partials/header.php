@@ -22,15 +22,6 @@
 
             <div class="text-end">
 
-                <!-- <?php if (Session::has("user")): ?>
-                    <a href="/users/logout" class="btn btn-outline-light me-2">Logout</a>
-                <?php endif; ?>
-
-                <?php if (!Session::has("user")): ?>
-                    <a href="/users/login" class="btn btn-outline-light me-2">Login</a>
-                    <a href="/users/register" class="btn btn-primary">Sign-up</a>
-                <?php endif ?> -->
-
                 <?php if (Session::has("user") && Session::get("user")[0]["user_type"] === "admin"): ?>
                     <a href="/users/logout" class="btn btn-outline-light me-2">Logout</a>
                     <a href="/users/register" class="btn btn-primary">Register new user</a>

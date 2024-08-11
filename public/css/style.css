@@ -5,7 +5,23 @@
 
 #header {
   background-color: #232221 !important;
-  color: red;
+}
+
+#footer-content {
+  background-color: #232221 !important;
+  color: white !important;
+}
+
+footer span {
+  color: white !important;
+}
+
+footer a {
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .btn-primary {
@@ -33,4 +49,8 @@
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
+}
+
+.card {
+  margin: 0 auto;
 }
