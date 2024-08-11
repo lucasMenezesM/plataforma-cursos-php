@@ -77,14 +77,12 @@ class UsersController
         $userId = $this->db->add($name, $email, $hashed_password, $city, $country);
 
         Session::set("user", [
-            [
-                "id" => $userId,
-                "name" => $name,
-                "email" => $email,
-                "city" => $city,
-                "country" => $country,
-                "user_type" => $user["user_type"]
-            ]
+            "id" => $userId,
+            "name" => $name,
+            "email" => $email,
+            "city" => $city,
+            "country" => $country,
+            "user_type" => $user["user_type"]
         ]);
 
         Session::set("success_messages", [["message" => "User Created Successfully"]]);
@@ -102,14 +100,12 @@ class UsersController
 
         if ($user && password_verify($password, $user["password"])) {
             Session::set("user", [
-                [
-                    "id" => $user["id"],
-                    "name" => $user["name"],
-                    "email" => $user["email"],
-                    "city" => $user["city"],
-                    "country" => $user["country"],
-                    "user_type" => $user["user_type"]
-                ]
+                "id" => $user["id"],
+                "name" => $user["name"],
+                "email" => $user["email"],
+                "city" => $user["city"],
+                "country" => $user["country"],
+                "user_type" => $user["user_type"]
             ]);
             Session::set("success_messages", [["message" => "User logged in"]]);
 

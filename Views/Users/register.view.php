@@ -32,7 +32,7 @@
             <label for="floatingPassword">Confirm Password</label>
         </div>
 
-        <?php if (Session::has("user") && Session::get("user")[0]["user_type"] === "admin"): ?>
+        <?php if (Session::has("user") && Session::get("user")["user_type"] === "admin"): ?>
             <div class="my-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Is admin</label>

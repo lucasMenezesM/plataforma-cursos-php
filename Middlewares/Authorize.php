@@ -12,14 +12,14 @@ class Authorize
             }
 
             if ($middleware === "Guest") {
-                if (Session::has("user") && Session::get("user")[0]["user_type"] !== "admin") {
+                if (Session::has("user") && Session::get("user")["user_type"] !== "admin") {
                     header("location: /");
                 }
             }
 
             if ($middleware === "Admin") {
 
-                if (Session::has("user") && Session::get("user")[0]["user_type"] !== "admin") {
+                if (Session::has("user") && Session::get("user")["user_type"] !== "admin") {
                     header("location: /");
                 }
             }

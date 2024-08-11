@@ -32,9 +32,13 @@ class CoursesModel extends BaseModel
             "img_url" => $img_url
         ];
 
-        $query = "INSERT INTO {$this->table} (teacher, name, description, hours_video, lessons, enrolled_students, img_url) VALUES (:teacher, :name, :description, :hours_video, :lessons, :enrolled_students, :img_url)";
+        try {
+            $query = "INSERT INTO {$this->table} (teacher, name, description, hours_video, lessons, enrolled_students, img_url) VALUES (:teacher, :name, :description, :hours_video, :lessons, :enrolled_students, :img_url)";
 
-        $smth = $this->connection->prepare($query);
-        $smth->execute($params);
+            $smth = $this->connection->prepare($query);
+            $smth->execute($params);
+        } catch (PDOException $e) {
+            throw new Exception("Failed to add course: " . $e);
+        }
     }
 }

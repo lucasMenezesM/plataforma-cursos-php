@@ -27,10 +27,12 @@ class CoursesController
      * @param array $params
      * @return void
      */
-    public function show(array $params)
+    public function show($params)
     {
         $id = $params["id"];
-        echo "id: " . $id;
+
+        $course = $this->db->findOne("id", $id);
+        loadView("Courses/show", ["course" => $course]);
     }
 
     /**

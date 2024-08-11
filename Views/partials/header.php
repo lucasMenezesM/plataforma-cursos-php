@@ -22,7 +22,7 @@
 
             <div class="text-end">
 
-                <?php if (Session::has("user") && Session::get("user")[0]["user_type"] === "admin"): ?>
+                <?php if (Session::has("user") && Session::get("user")["user_type"] === "admin"): ?>
                     <a href="/users/logout" class="btn btn-outline-light me-2">Logout</a>
                     <a href="/users/register" class="btn btn-primary">Register new user</a>
                     <a href="/courses/create" class="btn btn-primary mx-2">Create Course</a>

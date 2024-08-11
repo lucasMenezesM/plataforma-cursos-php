@@ -33,7 +33,6 @@
                     <?php endif ?>
                     <div class="card-body">
                         <h5 class="card-title"><?= $course["name"] ?></h5>
-                        <p class="card-text"><?= $course["description"] ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Teacher: <?= $course["teacher"] ?></li>
