@@ -58,6 +58,7 @@ class UsersController
         }
 
         if (!empty($errors)) {
+            Session::set("error_messages", $errors);
             inspect($errors);
             loadView("Users/register", [
                 "user" => [
@@ -85,6 +86,8 @@ class UsersController
             ]
         ]);
 
+        Session::set("success_messages", [["message" => "User Created Successfully"]]);
+
         header("location: /");
     }
 
@@ -106,11 +109,13 @@ class UsersController
                     "country" => $user["country"],
                 ]
             ]);
+            Session::set("success_messages", [["message" => "User logged in"]]);
 
             header("location: /");
         } else {
             $errors[] = ["message" => "Incorrect credentials"];
-            loadView("Users/login", ["errors" => $errors]);
+            Session::set("error_messages", $errors);
+            loadView("Users/login");
         }
     }
 

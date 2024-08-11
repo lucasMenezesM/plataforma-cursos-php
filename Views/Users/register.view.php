@@ -5,6 +5,8 @@
     <form method="POST" action="/users">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+        <?php loadPartial("flashMessage"); ?>
+
         <div class="form-floating">
             <input type="email" class="form-control" placeholder="name@example.com" name="email" value=<?= $user["email"] ?? "" ?>>
             <label for="floatingInput">Email address</label>

@@ -24,6 +24,11 @@ class Session
         return isset($_SESSION[$key]);
     }
 
+    public static function clearOne(string $key): void
+    {
+        unset($_SESSION[$key]);
+    }
+
     public static function clearAll(): void
     {
         session_unset();
