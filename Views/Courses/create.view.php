@@ -24,6 +24,10 @@
             <label for="exampleInputEmail1" class="form-label">Hours On-Demand Video</label>
             <input type="text" class="form-control" id="" name="hours_video">
         </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Image</label>
+            <input type="text" class="form-control" id="" name="img_url">
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

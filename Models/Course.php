@@ -19,7 +19,7 @@ class CoursesModel extends BaseModel
      * @param integer $qtd_alunos_matriculados
      * @return void
      */
-    public function add(string $name, string $description, int $hours_video, int $lessons, int $enrolled_students, string $teacher)
+    public function add(string $name, string $description, int $hours_video, int $lessons, int $enrolled_students, string $teacher, $img_url)
     {
 
         $params = [
@@ -28,10 +28,11 @@ class CoursesModel extends BaseModel
             "description" => $description,
             "hours_video" => $hours_video,
             "lessons" => $lessons,
-            "enrolled_students" => $enrolled_students
+            "enrolled_students" => $enrolled_students,
+            "img_url" => $img_url
         ];
 
-        $query = "INSERT INTO {$this->table} (teacher, name, description, hours_video, lessons, enrolled_students) VALUES (:teacher, :name, :description, :hours_video, :lessons, :enrolled_students)";
+        $query = "INSERT INTO {$this->table} (teacher, name, description, hours_video, lessons, enrolled_students, img_url) VALUES (:teacher, :name, :description, :hours_video, :lessons, :enrolled_students, :img_url)";
 
         $smth = $this->connection->prepare($query);
         $smth->execute($params);

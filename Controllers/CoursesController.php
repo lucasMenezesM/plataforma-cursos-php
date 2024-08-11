@@ -17,7 +17,8 @@ class CoursesController
      */
     public function index()
     {
-        inspect($this->db->findAll());
+        $courses = $this->db->findAll();
+        loadView("Courses/index", ["courses" => $courses]);
     }
 
     /**
@@ -55,9 +56,12 @@ class CoursesController
         $description = $_POST["description"] ?? "";
         $lessons = (int) $_POST["lessons"] ?? 0;
         $hours_video = (int) $_POST["hours_video"] ?? 0;
-        $enrolled_students = (int) $_POST["enrolled_students"] ?? 0;
+        $enrolled_students = 0;
         $teacher = $_POST["teacher"] ?? "";
+        $img_url = $_POST["img_url"] ?? "";
 
-        $this->db->add($name, $description, $hours_video, $lessons, $enrolled_students, $teacher);
+        $this->db->add($name, $description, $hours_video, $lessons, $enrolled_students, $teacher, $img_url);
+
+        header("location: /");
     }
 }
