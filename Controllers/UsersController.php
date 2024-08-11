@@ -85,7 +85,7 @@ class UsersController
             "user_type" => $user["user_type"]
         ]);
 
-        Session::set("success_messages", [["message" => "User Created Successfully"]]);
+        Session::set("success_messages", ["message" => "User Created Successfully"]);
 
         header("location: /");
     }
@@ -107,7 +107,7 @@ class UsersController
                 "country" => $user["country"],
                 "user_type" => $user["user_type"]
             ]);
-            Session::set("success_messages", [["message" => "User logged in"]]);
+            Session::set("success_messages", ["message" => "User logged in"]);
 
             header("location: /");
         } else {

@@ -1,7 +1,7 @@
 <?php if (Session::has("success_messages")): ?>
     <?php foreach (Session::get("success_messages") as $message): ?>
         <div class="alert alert-success" role="alert">
-            <?= $message["message"] ?>
+            <?= $message ?>
         </div>
     <?php endforeach ?>
     <?php Session::clearOne("success_messages") ?>

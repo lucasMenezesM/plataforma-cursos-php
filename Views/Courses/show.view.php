@@ -12,14 +12,21 @@
             <p class="lead my-0">Lessons: <?= $course["lessons"] ?></p>
             <p class="lead my-0"><?= $course["hours_video"] ?> hours video</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+
                 <a class="btn btn-primary btn-lg px-4 me-md-2">Enroll Now</a>
                 <a class="btn btn-outline-secondary btn-lg px-4">Default</a>
             </div>
 
-            <?php if (Session::has("user") && Session::get("user")["user_type"]): ?>
+            <?php if (Session::has("user") && Session::get("user")["user_type"] === "admin"): ?>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
-                    <a class="btn btn-success btn-lg px-4 me-md-2">Edit</a>
-                    <a class="btn btn-danger btn-lg px-4 me-md-2">Delete</a>
+                    <a href="/courses/edit/<?= $course["id"] ?>" class="btn btn-success btn-lg px-4 me-md-2">Edit</a>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2">
+                    <form action="/courses/<?= $course["id"] ?>" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-lg px-4 me-md-2">Delete</button>
+                    </form>
+
                 </div>
             <?php endif ?>
         </div>

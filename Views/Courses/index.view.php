@@ -21,10 +21,10 @@
                 <img src="/images/all-courses-banner.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
             </div>
         </div>
+        <?php loadPartial("flashMessage"); ?>
     </div>
 
     <div id="container-all-courses">
-
         <?php if (isset($courses)): ?>
             <?php foreach ($courses as $course): ?>
                 <div class="card" style="width: 18rem;">

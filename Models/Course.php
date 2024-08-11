@@ -6,7 +6,7 @@ class CoursesModel extends BaseModel
 {
     public function __construct()
     {
-        parent::__construct("Courses");
+        parent::__construct("courses");
     }
 
     /**
@@ -39,6 +39,48 @@ class CoursesModel extends BaseModel
             $smth->execute($params);
         } catch (PDOException $e) {
             throw new Exception("Failed to add course: " . $e);
+        }
+    }
+
+    /**
+     * Delete a course
+     *
+     * @param string $id
+     * @return void
+     */
+    public function delete(string $id): void
+    {
+        try {
+            $query = "DELETE FROM courses WHERE id = :id";
+            $params = ["id" => $id];
+
+            $smth = $this->connection->prepare($query);
+            $smth->execute($params);
+        } catch (PDOException $e) {
+            throw new Exception("Failed to delete course: " . $e);
+        }
+    }
+
+    public function update(string $id, string $name, string $description, int $hours_video, int $lessons, int $enrolled_students, string $teacher, $img_url): void
+    {
+        $params = [
+            "id" => $id,
+            "teacher" => $teacher,
+            "name" => $name,
+            "description" => $description,
+            "hours_video" => $hours_video,
+            "lessons" => $lessons,
+            "enrolled_students" => $enrolled_students,
+            "img_url" => $img_url
+        ];
+
+        try {
+            $query = "UPDATE courses SET teacher = :teacher, name = :name, description = :description, hours_video = :hours_video, lessons = :lessons, enrolled_students = :enrolled_students, img_url= :img_url WHERE id = :id";
+
+            $smth = $this->connection->prepare($query);
+            $smth->execute($params);
+        } catch (PDOException $e) {
+            throw new Exception("Failed to update course: " . $e);
         }
     }
 }

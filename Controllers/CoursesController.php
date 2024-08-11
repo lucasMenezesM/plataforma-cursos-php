@@ -29,6 +29,7 @@ class CoursesController
      */
     public function show($params)
     {
+
         $id = $params["id"];
 
         $course = $this->db->findOne("id", $id);
@@ -52,7 +53,10 @@ class CoursesController
      */
     public function store(): void
     {
-        inspect($_POST);
+        if (!Session::has("user") && !Session::get("user")["user_type"] === "admin") {
+            header("location: /courses");
+            exit;
+        }
 
         $name = $_POST["name"] ?? "";
         $description = $_POST["description"] ?? "";
@@ -64,6 +68,58 @@ class CoursesController
 
         $this->db->add($name, $description, $hours_video, $lessons, $enrolled_students, $teacher, $img_url);
 
-        header("location: /");
+        Session::set("success_messages", ["message" => "Course Created successfully"]);
+
+        header("location: /courses");
+    }
+
+    public function destroy($params)
+    {
+        if (!Session::has("user") && !Session::get("user")["user_type"] === "admin") {
+            header("location: /courses");
+            exit;
+        }
+        $courseId = $params["id"];
+
+        $this->db->delete($courseId);
+
+        Session::set("success_messages", ["message" => "Course deleted successfully"]);
+
+
+        header("location: /courses");
+    }
+
+    public function editView($params): void
+    {
+        $courseId = (int) $params[""];
+
+        inspect($courseId);
+        $course = $this->db->findOne("id", $courseId);
+        inspect($course);
+
+        loadView("Courses/edit", ["course" => $course]);
+    }
+
+    public function update($params): void
+    {
+        if (!Session::has("user") && !Session::get("user")["user_type"] === "admin") {
+            header("location: /courses");
+            exit;
+        }
+        $courseId = $params["id"];
+
+        $name = $_POST["name"] ?? "";
+        $description = $_POST["description"] ?? "";
+        $lessons = (int) $_POST["lessons"] ?? 0;
+        $hours_video = (int) $_POST["hours_video"] ?? 0;
+        $enrolled_students = 0;
+        $teacher = $_POST["teacher"] ?? "";
+        $img_url = $_POST["img_url"] ?? "";
+
+        $this->db->update($courseId, $name, $description, $hours_video, $lessons, $enrolled_students, $teacher, $img_url);
+
+        Session::set("success_messages", ["message" => "Course updated successfully"]);
+
+        header("location: /courses");
     }
 }

@@ -15,8 +15,11 @@ class Router
     {
         $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-        foreach ($this->routes as $route) {
+        if ($requestMethod === "POST" && isset($_POST["_method"])) {
+            $requestMethod = $_POST["_method"];
+        }
 
+        foreach ($this->routes as $route) {
 
             // uri requested by user
             $uriSegments = explode("/", trim($uri, '/'));
@@ -45,8 +48,7 @@ class Router
 
                 if ($match) {
                     // Extract controller and controller method
-                    inspect($route["middleware"]);
-                    inspect(Session::get("user"));
+
                     Authorize::authorize($route["middleware"]);
 
                     require basePath("Controllers/" . $route["controller"] . ".php");

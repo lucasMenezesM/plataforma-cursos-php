@@ -40,7 +40,12 @@ class BaseModel
 
     public function findOne(string $field, string $value): array | false
     {
-        $query = "SELECT * FROM {$this->table} WHERE {$field} = '{$value}'";
+        if ($field === "id") {
+            $query = "SELECT * FROM {$this->table} WHERE {$field} = {$value}";
+        } else {
+            $query = "SELECT * FROM {$this->table} WHERE {$field} = '{$value}'";
+        }
+        inspect($query);
         return $this->connection->query($query)->fetch();
     }
 

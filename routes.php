@@ -51,6 +51,13 @@ return [
         "middleware" => ["Auth", "Admin"]
     ],
     [
+        "uri" => "/courses/edit/{id}",
+        "method" => "GET",
+        "controller" => "CoursesController",
+        "controllerMethod" => "editView",
+        "middleware" => ["Auth", "Admin"]
+    ],
+    [
         "uri" => "/users/register",
         "method" => "GET",
         "controller" => "UsersController",
