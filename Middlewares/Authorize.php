@@ -7,7 +7,7 @@ class Authorize
         foreach ($middlewares as $middleware) {
             if ($middleware === "Auth") {
                 if (!Session::has("user")) {
-                    header("location: /");
+                    header("location: /users/login");
                 }
             }
 

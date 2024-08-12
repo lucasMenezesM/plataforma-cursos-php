@@ -32,7 +32,6 @@ class UsersController
         $city = $_POST["city"] ?? "";
         $country = $_POST["country"] ?? "";
 
-        inspect("password: " . $password . " | length: " . strlen($password));
         $errors = [];
 
         $user = $this->db->findOne("email", $email, "User");
@@ -59,7 +58,6 @@ class UsersController
 
         if (!empty($errors)) {
             Session::set("error_messages", $errors);
-            inspect($errors);
             loadView("Users/register", [
                 "user" => [
                     "name" => $name,

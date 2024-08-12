@@ -91,5 +91,19 @@ return [
         "controller" => "UsersController",
         "controllerMethod" => "login",
         "middleware" => ["Guest"]
+    ],
+    [
+        "uri" => "/enrollments",
+        "method" => "GET",
+        "controller" => "EnrollmentController",
+        "controllerMethod" => "showAll",
+        "middleware" => ["Auth"]
+    ],
+    [
+        "uri" => "/enrollments",
+        "method" => "POST",
+        "controller" => "EnrollmentController",
+        "controllerMethod" => "enroll",
+        "middleware" => ["Auth"]
     ]
 ];

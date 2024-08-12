@@ -11,10 +11,17 @@
             <p class="lead my-0">Teacher: <?= $course["teacher"] ?></p>
             <p class="lead my-0">Lessons: <?= $course["lessons"] ?></p>
             <p class="lead my-0"><?= $course["hours_video"] ?> hours video</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
 
-                <a class="btn btn-primary btn-lg px-4 me-md-2">Enroll Now</a>
-                <a class="btn btn-outline-secondary btn-lg px-4">Default</a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+                <form action="/enrollments" method="POST">
+                    <input type="hidden" name="courseId" value="<?= $course["id"] ?>">
+                    <input type="hidden" name="userId" value="<?= Session::get("user")["id"] ?>">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2">Enroll Now</button>
+                </form>
+
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+                <?php loadPartial("flashMessage") ?>
             </div>
 
             <?php if (Session::has("user") && Session::get("user")["user_type"] === "admin"): ?>

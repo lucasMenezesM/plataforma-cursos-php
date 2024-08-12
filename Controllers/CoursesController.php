@@ -1,6 +1,8 @@
 <?php
 
 require basePath("Models/Course.php");
+require basePath("Models/Enrollment.php");
+
 class CoursesController
 {
     private $db;
@@ -93,9 +95,7 @@ class CoursesController
     {
         $courseId = (int) $params[""];
 
-        inspect($courseId);
         $course = $this->db->findOne("id", $courseId);
-        inspect($course);
 
         loadView("Courses/edit", ["course" => $course]);
     }
@@ -121,5 +121,6 @@ class CoursesController
         Session::set("success_messages", ["message" => "Course updated successfully"]);
 
         header("location: /courses");
+        exit;
     }
 }

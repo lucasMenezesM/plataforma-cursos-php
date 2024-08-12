@@ -45,22 +45,18 @@ class BaseModel
         } else {
             $query = "SELECT * FROM {$this->table} WHERE {$field} = '{$value}'";
         }
-        inspect($query);
         return $this->connection->query($query)->fetch();
     }
 
-    public function add2($data)
+    public function curstomFetch(string $query, array $params, bool $all = true)
     {
+        $smth = $this->connection->prepare($query);
+        $smth->execute($params);
 
-
-        // $params = [];
-        // foreach($data as $field=>$value){
-        //     $params
-        // }
-
-        // $query = "INSERT INTO {$this->table}()";
-        // $smth = $this->connection->prepare($query);
-        // $smth->execute($params);
-
+        if ($all) {
+            return $smth->fetchAll();
+        } else {
+            return $smth->fetch();
+        }
     }
 }
