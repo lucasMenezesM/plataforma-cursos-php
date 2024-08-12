@@ -53,7 +53,7 @@ class BaseModel
         return $this->connection->query($query)->fetch();
     }
 
-    public function curstomFetch(string $query, array $params, bool $all = true)
+    public function customFetch(string $query, array $params, bool $all = true)
     {
         $smth = $this->connection->prepare($query);
         $smth->execute($params);

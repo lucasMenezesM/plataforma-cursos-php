@@ -21,15 +21,18 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $enrollment['name'] ?></h5>
+                            <h5 class="card-title"><?= $enrollment['course_name'] ?></h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p class="card-text"><small class="text-body-secondary">Enrollment date: <?= $created ?></small></p>
                         </div>
                     </div>
                 </div>
                 <div>
-
-                    <a class="btn btn-danger btn-sm m-2">Delete enrollment</a>
+                    <form action="/enrollments" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="enrollmentId" value="<?= $enrollment['id'] ?>">
+                        <button type="submit" class="btn btn-danger btn-sm m-2">Delete enrollment</button>
+                    </form>
                 </div>
             </div>
         <?php endforeach; ?>

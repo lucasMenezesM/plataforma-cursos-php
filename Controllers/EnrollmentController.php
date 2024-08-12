@@ -10,6 +10,11 @@ class EnrollmentController
         $this->db  = new Enrollment();
     }
 
+    /**
+     * Enroll a new course
+     *
+     * @return void
+     */
     public function enroll(): void
     {
         $courseId = htmlspecialchars($_POST["courseId"]);
@@ -22,7 +27,7 @@ class EnrollmentController
             "courseId" => $courseId,
         ];
 
-        $enrollment = $this->db->curstomFetch($query, $params, false);
+        $enrollment = $this->db->customFetch($query, $params, false);
 
         if ($enrollment) {
             $errors[] = ["message" => "You are already enrolled in this course."];
@@ -38,21 +43,44 @@ class EnrollmentController
         exit;
     }
 
+    /**
+     * Returns all the active enrollments of the current user
+     *
+     * @return void
+     */
     public function showAll(): void
     {
         $userId = Session::get("user")["id"];
 
-        $query = "SELECT * FROM courses_enrollment 
-        INNER JOIN users ON users.id = courses_enrollment.student_id
-        INNER JOIN courses on courses.id = courses_enrollment.course_id
-        WHERE users.id = :userId;";
+        $query = "SELECT courses_enrollment.id as id, courses_enrollment.created_at, c.img_url, c.name as course_name, c.description, u.name as user_name FROM courses_enrollment 
+        INNER JOIN users u ON u.id = courses_enrollment.student_id
+        INNER JOIN courses c on c.id = courses_enrollment.course_id
+        WHERE u.id = :userId;";
 
         $params = ["userId" => $userId];
 
-        $enrollments = $this->db->curstomFetch($query, $params);
+        $enrollments = $this->db->customFetch($query, $params);
 
         // $enrollments = $this->db->findAll("student_id", $userId);
 
         loadView("/Courses/enrollments", ["enrollments" => $enrollments]);
+    }
+
+    /**
+     * Remove a course enrollment 
+     *
+     * @param string $enrollmentId
+     * @return void
+     */
+    public function destroy(): void
+    {
+        $enrollmentId = $_POST["enrollmentId"];
+
+        $this->db->delete($enrollmentId);
+
+        Session::set("success_messages", ["message" => "Enrollment successfully removed"]);
+
+        header("location: /courses");
+        exit;
     }
 }

@@ -105,5 +105,12 @@ return [
         "controller" => "EnrollmentController",
         "controllerMethod" => "enroll",
         "middleware" => ["Auth"]
+    ],
+    [
+        "uri" => "/enrollments",
+        "method" => "DELETE",
+        "controller" => "EnrollmentController",
+        "controllerMethod" => "destroy",
+        "middleware" => ["Auth"]
     ]
 ];

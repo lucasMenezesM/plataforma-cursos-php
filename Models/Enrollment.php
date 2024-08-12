@@ -28,7 +28,28 @@ class Enrollment extends BaseModel
             $smth = $this->connection->prepare($query);
             $smth->execute($params);
         } catch (PDOException $e) {
-            throw new Exception("Failed to add enrollment: " . $e);
+            throw new Exception("Failed to add enrollment: " . $e->getMessage());
+        }
+    }
+
+    /**
+     * Delete a enrollment from database
+     *
+     * @param string $enrollmentId
+     * @return void
+     */
+    public function delete($enrollmentId): void
+    {
+        try {
+            $query = "DELETE FROM courses_enrollment WHERE id = :enrollmentId";
+            $params = [
+                "enrollmentId" => $enrollmentId
+            ];
+
+            $smth = $this->connection->prepare($query);
+            $smth->execute($params);
+        } catch (PDOException $e) {
+            throw new Exception("Failed to delete enrollment: " . $e->getMessage());
         }
     }
 }

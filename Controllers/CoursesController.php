@@ -75,7 +75,13 @@ class CoursesController
         header("location: /courses");
     }
 
-    public function destroy($params)
+    /**
+     * Delete a course from database
+     *
+     * @param array $params
+     * @return void
+     */
+    public function destroy(array $params)
     {
         if (!Session::has("user") && !Session::get("user")["user_type"] === "admin") {
             header("location: /courses");
@@ -91,6 +97,12 @@ class CoursesController
         header("location: /courses");
     }
 
+    /**
+     * Loads the edit course view
+     *
+     * @param array $params
+     * @return void
+     */
     public function editView($params): void
     {
         $courseId = (int) $params[""];
@@ -100,7 +112,13 @@ class CoursesController
         loadView("Courses/edit", ["course" => $course]);
     }
 
-    public function update($params): void
+    /**
+     * Updates a course
+     *
+     * @param array $params
+     * @return void
+     */
+    public function update(array $params): void
     {
         if (!Session::has("user") && !Session::get("user")["user_type"] === "admin") {
             header("location: /courses");
