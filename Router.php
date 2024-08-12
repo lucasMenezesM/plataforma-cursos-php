@@ -22,6 +22,7 @@ class Router
         foreach ($this->routes as $route) {
 
             // uri requested by user
+            $uri = parse_url($uri, PHP_URL_PATH);
             $uriSegments = explode("/", trim($uri, '/'));
 
             // Uri for each iteration
@@ -64,7 +65,4 @@ class Router
         http_response_code(404);
         loadView("error", ["statusCode" => 404]);
     }
-
-    // require basePath("Views/error.view.php");
-    // loadView("error", ["statusCode" => 404]);
 }

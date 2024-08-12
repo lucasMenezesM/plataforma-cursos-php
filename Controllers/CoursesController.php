@@ -141,4 +141,26 @@ class CoursesController
         header("location: /courses");
         exit;
     }
+
+    /**
+     * Loads the view with the given query
+     *
+     * @return void
+     */
+    public function search(): void
+    {
+        // $query = "SELECT * FROM courses WHERE name LIKE '%:query1%' OR teacher LIKE '%:query2%'";
+        $query = "SELECT * FROM courses WHERE name LIKE CONCAT('%', :query, '%') OR teacher LIKE CONCAT('%', :query, '%')";
+
+        // $params = [
+        //     ":query1" => $_GET["query"],
+        //     ":query2" => $_GET["query"]
+        // ];
+
+        $params = [':query' => $_GET['query']];
+
+        $courses = $this->db->customFetch($query, $params);
+
+        loadView("Courses/index", ["courses" => $courses, "search" => $_GET['query']]);
+    }
 }

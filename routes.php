@@ -23,6 +23,13 @@ return [
         "middleware" => ["Auth", "Admin"]
     ],
     [
+        "uri" => "/courses/search",
+        "method" => "GET",
+        "controller" => "CoursesController",
+        "controllerMethod" => "search",
+        "middleware" => []
+    ],
+    [
         "uri" => "/courses",
         "method" => "POST",
         "controller" => "CoursesController",

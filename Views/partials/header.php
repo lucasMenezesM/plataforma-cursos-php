@@ -17,9 +17,8 @@
                 <?php endif; ?>
             </ul>
 
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark text-bg-white" placeholder="Search Course" aria-label="Search">
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="GET" action="/courses/search">
+                <input type="search" class="form-control form-control-dark text-bg-white" placeholder="Search Course" aria-label="Search" name="query">
             </form>
 
             <div class="text-end">
