@@ -40,6 +40,19 @@ class EnrollmentController
 
     public function showAll(): void
     {
-        inspectAndDie("all enrollments");
+        $userId = Session::get("user")["id"];
+
+        $query = "SELECT * FROM courses_enrollment 
+        INNER JOIN users ON users.id = courses_enrollment.student_id
+        INNER JOIN courses on courses.id = courses_enrollment.course_id
+        WHERE users.id = :userId;";
+
+        $params = ["userId" => $userId];
+
+        $enrollments = $this->db->curstomFetch($query, $params);
+
+        // $enrollments = $this->db->findAll("student_id", $userId);
+
+        loadView("/Courses/enrollments", ["enrollments" => $enrollments]);
     }
 }

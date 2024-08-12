@@ -56,3 +56,11 @@ footer a {
 .card {
   margin: 0 auto;
 }
+
+.create-course-form {
+  height: 100vh;
+}
+
+#enrollments-container {
+  min-height: 100vh;
+}

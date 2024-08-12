@@ -32,9 +32,14 @@ class BaseModel
         }
     }
 
-    public function findAll(): array | false
+    public function findAll(string $field = "", string $value = ""): array | false
     {
-        $query = "SELECT * FROM {$this->table}";
+        if (empty($query) && empty($value)) {
+            $query = "SELECT * FROM {$this->table}";
+        } else {
+            $query = "SELECT * FROM {$this->table} WHERE {$field} = {$value}";
+        }
+
         return $this->connection->query($query)->fetchAll();
     }
 
