@@ -64,3 +64,22 @@ footer a {
 #enrollments-container {
   min-height: 100vh;
 }
+
+#carousel-container {
+  max-width: 900px;
+}
+
+#carousel-container h5 {
+  font-weight: 800;
+}
+#carousel-container p,
+#carousel-container h5 {
+  text-shadow: 1px 1px 0 #000,
+    /* Sombra na posição (1px, 1px) com cor preta */ -1px -1px 0 #000,
+    /* Sombra na posição (-1px, -1px) com cor preta */ 1px -1px 0 #000,
+    /* Sombra na posição (1px, -1px) com cor preta */ -1px 1px 0 #000; /* Sombra na posição (-1px, 1px) com cor preta */
+}
+
+#features-container {
+  margin-top: 120px;
+}
