@@ -119,5 +119,19 @@ return [
         "controller" => "EnrollmentController",
         "controllerMethod" => "destroy",
         "middleware" => ["Auth"]
+    ],
+    [
+        "uri" => "/comments",
+        "method" => "POST",
+        "controller" => "CommentsController",
+        "controllerMethod" => "create",
+        "middleware" => ["Auth"]
+    ],
+    [
+        "uri" => "/comments",
+        "method" => "DELETE",
+        "controller" => "CommentsController",
+        "controllerMethod" => "destroy",
+        "middleware" => ["Auth"]
     ]
 ];

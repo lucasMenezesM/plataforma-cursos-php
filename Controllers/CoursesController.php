@@ -2,6 +2,7 @@
 
 require basePath("Models/Course.php");
 require basePath("Models/Enrollment.php");
+require basePath("Models/Comment.php");
 
 class CoursesController
 {
@@ -31,11 +32,21 @@ class CoursesController
      */
     public function show($params)
     {
-
         $id = $params["id"];
 
+        $query = "select u.name, comments.user_id, title, content, comments.created_at, comments.id from comments inner join users u on comments.user_id = u.id inner join courses c on comments.course_id = c.id where c.id = :courseId";
+
+        $params = [
+            "courseId" => $id
+        ];
+
+        $commentsDb = new Comment();
+
+        $comments = $commentsDb->customFetch($query, $params, true);
+
+
         $course = $this->db->findOne("id", $id);
-        loadView("Courses/show", ["course" => $course]);
+        loadView("Courses/show", ["course" => $course, "comments" => $comments]);
     }
 
     /**
