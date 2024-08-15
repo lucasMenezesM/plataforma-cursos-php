@@ -1,6 +1,7 @@
 <?php
 // Middlewares\Authorize.php
 require basePath("Middlewares/Authorize.php");
+require basePath("Controllers/ErrorController.php");
 
 class Router
 {
@@ -62,7 +63,6 @@ class Router
             }
         }
 
-        http_response_code(404);
-        loadView("error", ["statusCode" => 404]);
+        ErrorController::notFoud("Route not found.");
     }
 }

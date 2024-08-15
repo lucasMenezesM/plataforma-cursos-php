@@ -35,8 +35,7 @@ class CommentsController
 
         // Check if the user is authorize to delete a comment
         if (!Session::has("user") || !Session::get("user")["id"] === $userId) {
-            header("Location: /users/login");
-            exit;
+            ErrorController::unauthorized("You are not authorized to complete this action.");
         }
 
         $this->db->delete($commentId);

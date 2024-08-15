@@ -20,7 +20,7 @@ class Authorize
             if ($middleware === "Admin") {
 
                 if (Session::has("user") && Session::get("user")["user_type"] !== "admin") {
-                    header("location: /");
+                    ErrorController::unauthorized();
                 }
             }
         }

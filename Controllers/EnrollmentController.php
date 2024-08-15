@@ -75,8 +75,13 @@ class EnrollmentController
     public function destroy(): void
     {
         $enrollmentId = $_POST["enrollmentId"];
+        $userId = Session::get("user")["id"] ?? "";
 
         $this->db->delete($enrollmentId);
+
+        if (!Session::has("user") || !Session::get("user")["id"] === $userId) {
+            ErrorController::unauthorized("You are not authorized to complete this action.");
+        }
 
         Session::set("success_messages", ["message" => "Enrollment successfully removed"]);
 
